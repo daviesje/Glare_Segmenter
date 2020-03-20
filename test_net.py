@@ -28,10 +28,10 @@ for i,d in enumerate(idx):
 model = load_model(f'./models/model.h5')
 
 #classify new image
-#predictions = (model.predict(im_arr) > 0.5)*(np.ones(3)[None,None,None,:])
+#predictions = (model.predict(im_arr/255.) > 0.1)*(np.ones(3)[None,None,None,:])
 predictions = model.predict(im_arr/255.)*(np.ones(3)[None,None,None,:])
 print(predictions.shape)
-print(predictions[0,:10,:10])
+print(predictions[0,...].max(),predictions[0,...].min())
 
 #np.save(f'./predictions_{model_name}.npy',predictions)
 

@@ -90,8 +90,6 @@ results = m.fit_generator(train_generator, epochs=NO_OF_EPOCHS,
                           callbacks=callbacks_list)
 m.save('models/model.h5')
 
-nepochs = results.
-
 plt.figure(figsize=(12,8))
 plt.plot(results.history["loss"], label="train_loss")
 plt.plot(results.history["val_loss"], label="val_loss")

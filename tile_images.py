@@ -18,7 +18,7 @@ def read_image(imfile):
     raster = np.array(reader)
     return raster
 
-fullimage = read_image('../Glare_Classifier/tiles/masks/Bleaching_glare_polygon_big_04_11.png')
+fullimage = read_image('../Glare_Classifier/tiles/frames/Bleaching_glare_map_big_04_12.png')
 buf = np.zeros((256,256,256,3))
 buf[...,0] = blockshaped(fullimage[...,0],256,256)
 buf[...,1] = blockshaped(fullimage[...,1],256,256)
@@ -28,4 +28,16 @@ buf = buf.astype('uint8')
 
 for i in range(256):
     im = Image.fromarray(buf[i,...])
-    im.save(f'./tiles_seg/labels/Glare_04_11_{i:03d}.png')
+    im.save(f'./tiles_seg/images/Glare_04_12_{i:03d}.png')
+
+fullimage = read_image('../Glare_Classifier/tiles/masks/Bleaching_glare_polygon_big_04_12.png')
+buf = np.zeros((256,256,256,3))
+buf[...,0] = blockshaped(fullimage[...,0],256,256)
+buf[...,1] = blockshaped(fullimage[...,1],256,256)
+buf[...,2] = blockshaped(fullimage[...,2],256,256)
+
+buf = buf.astype('uint8')
+
+for i in range(256):
+    im = Image.fromarray(buf[i,...])
+    im.save(f'./tiles_seg/labels/Glare_04_12_{i:03d}.png')
